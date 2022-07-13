@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block title %} {{ current_service }} {% endblock %} {% block content %}
+
+<section class='service'>
+    <div class='container'>
+        <div class='service__inner'>
+            <div class="service__left">
+                <h2 class="service__title">{{ current_service }}</h2>
+                <ul class="service__list">
+                    {% for subsection in subsections %}
+                    <li>{{ subsection.name }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="#contacts_form" class="service__btn btn">Заказать</a>
+            </div>
+            <div class="service__right">
+                <img src="{% static current_service.get_image %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='service-steps'>
+    <div class='container'>
+        <div class='service-steps__inner'>
+            {% for subsection in subsections %}
+            <div class="service-steps__item">
+                <div class="service-steps__item-left">
+                    <div class="service-steps__item-title">{{ subsection.name }}</div>
+                    <div class="service-steps__item-text">{{ subsection.description }}</div>
+                </div>
+                <div class="service-steps__item-img">
+                    <img src="{% static subsection.get_image %}" alt="">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

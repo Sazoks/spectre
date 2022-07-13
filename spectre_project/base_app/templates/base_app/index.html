@@ -1,0 +1,329 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block content %}
+
+<section class='main'>
+    <div class='container'>
+        <h1 class="main__title">
+            Создаем <br>светотехнические решения
+        </h1>
+        <div class='main__inner'>
+            <div class="main__left">
+                <div class="main__item">Продажа</div>
+                <div class="main__item">Монтаж</div>
+                <div class="main__item">Обслуживание</div>
+                <a href="#contacts_form" class="main__btn btn">
+                    ОСТАВИТЬ  <br>ЗАЯВКУ
+                </a>
+            </div>
+            <div class="main__right">
+                <img src="{% static 'base_app/img/main.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='target'>
+    <div class='container'>
+        <div class='target__inner'>
+            <h2 class="target__title">Наша цель — повысить <br> безопасность и комфорт</h2>
+            <div class="target__desc">
+                Освещением занимается команда специалистов: проектировщики, <br> архитекторы, маркетологи и обслуживающие компании. <br> Под каждого из них мы находим свой подход.
+            </div>
+            <div class="target__lists">
+                <ul class="target__list">
+                    <li>дачные и коттеджные поселки</li>
+                    <li>частный дома и квартиры</li>
+                    <li>логистические центры</li>
+                    <li>промышленные предприятия</li>
+                    <li>офисные центры</li>
+                </ul>
+                <ul class="target__list">
+                    <li>жилые комплексы</li>
+                    <li>государственные учреждения</li>
+                    <li>финансовые учреждения</li>
+                    <li>гостинечно-ресторанные комплексы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='offer'>
+    <div class='container'>
+        <p class="offer__title">Мы предлагаем,</p>
+        <div class='offer__inner'>
+            <div class="offer__left">
+                {% for service in services %} {% if forloop.counter == 1 %}
+                <div class="offer__tab offer__tab--active" data-tab-path='{{forloop.counter}}'>{{service.name}}</div>
+                {% else %}
+                <div class="offer__tab" data-tab-path='{{forloop.counter}}'>{{service.name}}</div>
+                {% endif %} {% endfor %}
+            </div>
+            <div class="offer__right">
+                {% for service in services %} {% if forloop.counter == 1 %}
+                <div class="offer__content offer__content--active" data-content-path='{{forloop.counter}}'>
+                    <div class="offer__content-img">
+                        <img src="{% static service.get_image %}" alt="">
+                    </div>
+                    <div class="offer__content-bottom">
+                        <div class="offer__content-title">
+                            {{service.short_description}}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="offer__content" data-content-path='{{forloop.counter}}'>
+                    <div class="offer__content-img">
+                        <img src="{% static service.get_image %}" alt="">
+                    </div>
+                    <div class="offer__content-bottom">
+                        <div class="offer__content-title">
+                            {{service.short_description}}
+                        </div>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='why'>
+    <div class='container'>
+        <div class='why__top'>
+            <p class="why__title">Почему мы,</p>
+            <div class="why__top-right">
+                <div class="why__top-title">Мы считаем, что освещение <br> должно делать вашу жизнь лучше</div>
+                <div class="why__top-desc">
+                    Поэтому при подборе <br> недвижимости мы тщательно <br> узнаем ваш запрос и найдем только <br> то, что идеально подходит.
+
+                </div>
+            </div>
+        </div>
+        <div class="why__slider">
+            <div class='swiper-container'>
+                <div class='swiper-wrapper'>
+                    <div class='swiper-slide'>
+                        <div class="why__item">
+                            <div class="why__item-img">
+                                <img src="{% static 'base_app/img/why1.jpg' %}" alt="">
+                            </div>
+                            <div class="why__item-content">
+                                <span class="why__item-content-line"></span>
+                                <div class="why__item-title">Мы разобрались <br> в рынке за вас</div>
+                                <div class="why__item-desc">У нас в портфеле более 130 объектов, но для вас мы сделаем индивидуальную подборку только с подходящими вариантами.</div>
+                            </div>
+                            <span class="why__item-line"></span>
+                            <span class="why__item-line-bottom"></span>
+                        </div>
+                    </div>
+                    <div class='swiper-slide'>
+                        <div class="why__item">
+                            <div class="why__item-img">
+                                <img src="{% static 'base_app/img/why2.jpg' %}" alt="">
+                            </div>
+                            <div class="why__item-content">
+                                <span class="why__item-content-line"></span>
+                                <div class="why__item-title">Расскажем про все <br> плюсы и минусы</div>
+                                <div class="why__item-desc">Мы не хотим продать вам какой-то конкретный объект, наша цель — найти «ту самую» квартиру для вас и остаться партнерами на долгие годы.
+                                </div>
+                            </div>
+                            <span class="why__item-line-bottom"></span>
+                        </div>
+                    </div>
+                    <div class='swiper-slide'>
+                        <div class="why__item why__item--reverse">
+                            <div class="why__item-img">
+                                <img src="{% static 'base_app/img/why3.jpg' %}" alt="">
+                            </div>
+                            <div class="why__item-content">
+                                <span class="why__item-content-line"></span>
+                                <div class="why__item-title">Мы — визионеры</div>
+                                <div class="why__item-desc">Не только расскажем обо всем актуальном на рынке, но и спрогнозируем, как изменится стоимость жилья и ваш район через несколько лет.</div>
+                            </div>
+                            <span class="why__item-line"></span>
+                            <span class="why__item-line-bottom"></span>
+                        </div>
+                    </div>
+                    <div class='swiper-slide'>
+                        <div class="why__item why__item--reverse">
+                            <div class="why__item-img">
+                                <img src="{% static 'base_app/img/why4.jpg' %}" alt="">
+                            </div>
+                            <div class="why__item-content">
+                                <span class="why__item-content-line"></span>
+                                <div class="why__item-title">Ответим на <br> любой ваш вопрос</div>
+                                <div class="why__item-desc">Будь то юридическое оформление сделки, дизайн интерьера или технические особенности постройки — наши брокеры расскажут обо всем и дадут рекомендации.
+                                </div>
+                            </div>
+                            <span class="why__item-line-bottom"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class='swiper-pagination'></div>
+        </div>
+    </div>
+</section>
+
+<section class='catalog'>
+    <div class='container'>
+        <div class='catalog__inner'>
+            <div class="catalog__left">
+                <p class="catalog__title">Ваш каталог,</p>
+            </div>
+            <div class="catalog__right">
+                <div class="catalog__content">
+                    <div class="catalog__desc">
+                        Расскажите про характеристики <br> вашего освещения, и мы составим <br> для Вас каталог с подходящими <br> вариантами.
+                    </div>
+                    <a href="#contacts_form" class="catalog__link"><span>Получить</span> <span>каталог</span></a>
+                </div>
+                <div class="catalog__img">
+                    <img src="{% static 'base_app/img/catalog.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='team'>
+    <div class='container'>
+        <div class="team__inner">
+            <div class='team__top'>
+                <div class="team__left">
+                    <p class="team__title">Команда,</p>
+                </div>
+                <div class="team__right">
+                    <div class="team__top-title">
+                        Наши брокеры — эксперты в сфере недвижимости
+                    </div>
+                    <div class="team__top-desc">
+                        <span>Наши брокеры — эксперты в сфере недвижимости с многолетним опытом, прошедшие жесткий 3-этапный отбор и обучение. Профессионализм, честность                         </span>
+                        <span>и клиентоориентированность — те принципы, которые помогают нам добиваться успехов и заслуживать ваши положительные отзывы.                         </span>
+                    </div>
+                </div>
+            </div>
+            <div class='team__center'>
+                <div class="team__left">
+                    <div class="team__slider-nav">
+                        <div class='team__slider-nav-prev swiper-button-prev'>
+                            <svg width="42" height="35" viewBox="0 0 42 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.3233 0.330798L19.4888 2.49631L5.85687 16.1282L41.7828 16.1282L41.7828 19.1816L5.85687 19.1816L19.4888 32.8135L17.3233 34.979L-0.000846103 17.6549L17.3233 0.330798Z" fill="#000"/>
+                            </svg>
+                        </div>
+                        <div class='team__slider-nav-next swiper-button-next'>
+                            <svg width="43" height="35" viewBox="0 0 43 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M25.2939 0.330798L23.1284 2.49631L36.7603 16.1282L0.834431 16.1282L0.834431 19.1816L36.7603 19.1816L23.1284 32.8135L25.2939 34.979L42.618 17.6549L25.2939 0.330798Z" fill="black"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team__right">
+                    <div class="team__slider">
+                        <div class='swiper-container'>
+                            <div class='swiper-wrapper'>
+                                <div class='swiper-slide'>
+                                    <div class="team__slider-item">
+                                        <img src="{% static 'base_app/img/team1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class='swiper-slide'>
+                                    <div class="team__slider-item">
+                                        <img src="{% static 'base_app/img/team1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class='swiper-slide'>
+                                    <div class="team__slider-item">
+                                        <img src="{% static 'base_app/img/team1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='swiper-pagination'></div>
+                </div>
+            </div>
+            <div class="team__bottom">
+                <div class="team__info">
+                    <div class="team__info-item">
+                        <div>
+                            <strong class="team__info-item-title">350+</strong>
+                            <span class="team__info-item-subtitle">успешных сделок</span>
+                        </div>
+                    </div>
+                    <div class="team__info-item">
+                        <div>
+                            <strong class="team__info-item-title">483</strong>
+                            <span class="team__info-item-subtitle">млрд.руб. / год прибыль наших клиентов</span>
+                        </div>
+                    </div>
+                    <div class="team__info-item">
+                        <div>
+                            <strong class="team__info-item-title">320 234</strong>
+                            <span class="team__info-item-subtitle">м2 площадь проданной недвижимости</span>
+                        </div>
+                    </div>
+                    <div class="team__info-item">
+                        <div>
+                            <strong class="team__info-item-title">2+</strong>
+                            <span class="team__info-item-subtitle">года на рынке</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='our-work'>
+    <div class='container'>
+        <div class='our-work__top'>
+            <p class="our-work__title">Наша работа,</p>
+            <div class="our-work__top-title">
+                При подборе монтаже освещения мы ориентируемся на несколько характеристик
+            </div>
+        </div>
+        <div class="our-work__items">
+            {% for item in FAQs %}
+            <div class="our-work__item">
+                <div class="our-work__item-show">
+                    <div class="our-work__item-left">
+                        <span class="our-work__item-num">   0{{ forloop.counter }}</span>
+                    </div>
+                    <div class="our-work__item-right">
+                        <p class="our-work__item-title">{{ item.title }}</p>
+                        <button class="our-work__item-btn">
+                            <svg width="44" height="45" viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.51562 22.5625H42.6406M22.0781 2V43.125V2Z" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="our-work__item-hidden">
+                    <div class="our-work__item-left">
+                        <!-- <span class="our-work__item-num">01</span> -->
+                    </div>
+                    <div class="our-work__item-right">
+                        <div class="our-work__item-desc">
+                            <span>{{ item.description_1 }}</span>
+                            <span>{{ item.description_2 }}</span>
+                        </div>
+                        <div class="our-work__item-images">
+                            <div class="our-work__item-img our-work__item-img--big">
+                                <img src="{% static item.get_image_1 %}" alt="">
+                            </div>
+                            <div class="our-work__item-img our-work__item-img--small">
+                                <img src="{% static item.get_image_2 %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

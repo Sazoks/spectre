@@ -1,0 +1,183 @@
+<!DOCTYPE html> {% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %} Главная {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'base_app/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base_app/css/style.css' %}">
+	<link rel="icon" type="image/png" href="{% static 'base_app/img/logo.png' %}" />
+
+</head>
+
+<body>
+    <header class='header'>
+        <div class='container'>
+            <div class='header__inner'>
+                <a href="{% url 'index' %}" class="header__logo">
+                    <img src="{% static 'base_app/img/logo.png' %}" alt="">
+                </a>
+
+                <div class="header__right">
+                    <div class="header__right-inner">
+                        <div class="nav">
+                            <a href="{% url 'index' %}" class="nav__item">Главная</a>
+                            <a href="{% url 'about' %}" class="nav__item">О нас</a>
+                            <a href="{% url 'contacts' %}" class="nav__item">Контакты</a>
+                        </div>
+                        <a href="tel:+73912152010" class="header__phone">+7(391) 215‑20‑10</a>
+                        <a href="#contacts_form" class="header__btn btn">Заказать звонок</a>
+                    </div>
+                </div>
+                <button class="header__burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+
+    <section class='special'>
+        <div class='container'>
+            <div class='special__inner'>
+                <div class="special__left">
+                    <p class="special__title">Контакты,</p>
+                </div>
+                <div class="special__right">
+                    <p class="special__right-title">
+                        Получите специальное предложение
+                    </p>
+                    <div class="special__bottom">
+                        <form action="" class="special__form" id="contacts_form" method="POST">
+                            {% csrf_token %}
+                            <div class="special__input">
+                                <input type="text" placeholder="Имя" id="name" name="name">
+                            </div>
+                            <div class="special__input">
+                                <input type="tel" placeholder="Телефон" id="phone" name="phone">
+                            </div>
+                            <div class="special__checkbox">
+                                <input type='checkbox' class='checkbox' id='c' />
+                                <label for='c'>Я принимаю условия по обработке персональных данных</label>
+                            </div>
+                            <button class="special__btn" id="send_contacts" name="send_contacts">Оставить заявку</button>
+                        </form>
+                        <div class="special__contacts">
+                            <div class="special__address">
+                                <strong>А,</strong>
+                                <span>115280, Москва, Ленинская Слобода,19</span>
+                            </div>
+                            <a href="tel:+78004443840" class="special__phone">
+                                <strong>Т,</strong>
+                                <span>+7 (800) 444-38-40</span>
+                            </a>
+                            <a href="mailto:hello@firstly.ru" class="special__mail">
+                                <strong>Е,</strong>
+                                <span>hello@firstly.ru</span>
+                            </a>
+                            <div class="special__socials">
+                                <a href="">
+                                    <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M35.2656 1.69104C34.0732 2.1174 0.802148 15.118 0.578125 15.2408C0.289062 15.3998 0 15.884 0 16.2164C0 16.3465 0.0722656 16.5922 0.166211 16.7656L0.325195 17.0908L5.09473 19.4756C9.44512 21.6508 9.89316 21.8604 10.2256 21.8604C10.6086 21.8604 10.3484 22.0049 18.5723 17.2137C18.7963 17.0836 18.6662 17.2065 16.0141 19.5479C14.8361 20.5885 13.8244 21.5424 13.7377 21.6869C13.5859 21.9471 13.5859 21.9977 13.5859 27.4899C13.5859 32.7869 13.5932 33.0399 13.7232 33.3C14.0051 33.8492 14.8217 34.066 15.3275 33.7264C15.5154 33.6035 19.1865 28.8629 19.5045 28.3426C19.5406 28.2703 20.8559 28.993 24.4691 31.0526L29.376 33.8565H29.824C30.3371 33.8565 30.5973 33.7119 30.8068 33.3072C30.9369 33.0615 37 2.99904 37 2.61604C37 2.28361 36.7037 1.85725 36.3496 1.67658C35.9521 1.48146 35.851 1.48146 35.2656 1.69104ZM31.6451 17.7557C30.207 24.9461 29.0074 30.843 28.9857 30.8719C28.9568 30.9008 26.8467 29.7373 24.2957 28.2848C21.0871 26.4565 19.5623 25.6254 19.3672 25.6037C19.1721 25.5748 18.9986 25.611 18.7746 25.7194C18.5145 25.8422 18.2615 26.1457 17.1848 27.5766L15.8984 29.2893L15.9057 26.0084V22.7276L22.4891 16.9102C26.1023 13.7088 29.1375 10.9916 29.2314 10.876C29.4844 10.5508 29.5277 10.1967 29.3543 9.81369C29.0941 9.22834 28.5377 8.92482 28.0246 9.09826C27.8945 9.14162 23.8188 11.483 18.9697 14.3014L10.1605 19.425L7.10371 17.9002C5.31875 17.0041 4.09023 16.3537 4.14082 16.3176C4.19141 16.2959 7.33496 15.0602 11.1289 13.5787C14.9229 12.0973 21.6725 9.46681 26.124 7.73244C30.5756 5.99806 34.225 4.60334 34.2395 4.63224C34.2539 4.66838 33.0904 10.5725 31.6451 17.7557Z" fill="black"/>
+                                    </svg>
+                                </a>
+                                <a href="">
+                                    <svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_464:1416)">
+                                        <path d="M16.4346 0.144741C12.2937 0.795132 8.52148 2.72462 5.55859 5.70197C4.06992 7.20509 2.81973 8.94669 1.94531 10.7317C0.70957 13.2754 0.182031 15.5012 0.182031 18.2473C0.174805 21.174 0.789062 23.7106 2.15488 26.4277L2.51621 27.1504L1.32383 31.4719C0.673438 33.8494 0.138672 35.8656 0.138672 35.9451C0.138672 36.2053 0.434961 36.7039 0.673438 36.8557C1.11426 37.1231 1.39609 37.0725 5.99941 35.8729L10.3354 34.7383L10.9641 35.0346C12.9875 35.9885 14.823 36.4438 17.627 36.6678C20.1201 36.8701 22.7289 36.516 25.1426 35.6344C26.1182 35.2731 27.708 34.4637 28.6475 33.8422C33.034 30.9444 35.9535 26.2832 36.7918 20.8488C36.9797 19.6203 37.0158 17.0115 36.8641 15.8986C36.3438 12.1914 34.9924 9.13459 32.6004 6.28009C30.4469 3.71466 26.8697 1.45275 23.56 0.563881C21.8689 0.115837 21.4426 0.0652504 19.2891 0.0363426C17.598 0.00743866 17.1717 0.0218887 16.4346 0.144741ZM21.6449 2.51505C23.7551 2.91974 25.6701 3.69299 27.4189 4.84201C29.4279 6.16447 30.6059 7.35685 32.0729 9.5465C33.4965 11.6783 34.3492 13.8319 34.725 16.2311C34.8912 17.2934 34.884 19.3457 34.725 20.408C33.6772 27.1432 29.0305 32.4041 22.7578 33.9578C20.4742 34.5215 17.9449 34.5504 15.2855 34.0373C14.2449 33.835 13.0598 33.4375 11.8168 32.8811C11.2604 32.6354 10.6895 32.4113 10.5521 32.3969C10.3643 32.368 9.24414 32.6354 6.6498 33.3074C4.64805 33.8277 3.00039 34.2469 2.98594 34.2397C2.97871 34.2252 3.40508 32.6426 3.93262 30.7131C4.46738 28.7836 4.90098 27.107 4.9082 26.977C4.9082 26.8324 4.71309 26.3555 4.37344 25.6762C3.22441 23.3854 2.68242 21.5354 2.53066 19.3313C2.22715 14.952 3.89648 10.6522 7.1918 7.33517C9.68496 4.83478 12.9297 3.11486 16.2828 2.52951C17.4535 2.32716 17.4463 2.32716 19.2168 2.34884C20.5176 2.3633 21.0018 2.39943 21.6449 2.51505Z" fill="black"/>
+                                        <path d="M10.5025 9.01867C9.32456 9.43058 8.32007 10.6157 7.7564 12.2706C7.22163 13.8388 7.2939 15.3491 7.98765 17.163C9.27398 20.5017 12.7789 24.1294 16.8691 26.3624C19.1527 27.6054 21.1689 28.1763 23.0044 28.0896C24.616 28.0101 25.7 27.5548 26.7406 26.5214C27.5138 25.7554 27.9763 24.9027 28.1498 23.9198C28.3449 22.7997 28.1425 22.0771 27.4994 21.5929C26.7767 21.0581 23.5103 19.5839 22.7804 19.4683C22.3613 19.4032 21.841 19.5478 21.4363 19.8441C21.2484 19.9814 20.8076 20.4511 20.4679 20.8847L19.8464 21.6724L19.355 21.4267C17.1943 20.3355 15.7562 19.0925 14.7084 17.4304L14.5132 17.1196L14.9468 16.6066C15.1781 16.332 15.4816 15.8984 15.6189 15.6599C15.8357 15.248 15.8574 15.1613 15.8501 14.5976C15.8501 14.0122 15.8285 13.9472 15.4888 13.2245C15.2865 12.8054 14.9035 11.9093 14.6361 11.2228C13.9857 9.56066 13.6533 9.18488 12.656 8.96808C12.0634 8.84523 10.9361 8.87414 10.5025 9.01867ZM12.5115 12.1333C12.6994 12.632 13.0173 13.3691 13.2125 13.7882C13.4148 14.2001 13.581 14.5614 13.581 14.5904C13.581 14.612 13.3353 14.93 13.039 15.2841C12.0417 16.462 11.8828 17.1052 12.3525 17.9868C12.721 18.6806 13.4437 19.6923 14.0291 20.3427C15.1275 21.5568 16.197 22.3589 17.9892 23.32C19.1744 23.956 19.4996 24.0716 20.0199 24.0788C20.7136 24.0788 21.0822 23.8114 22.1156 22.5323L22.6865 21.8314L23.3152 22.1132C23.6693 22.265 24.3775 22.5829 24.8906 22.8214L25.83 23.255L25.8156 23.5802C25.8011 23.9993 25.4326 24.7148 25.0568 25.0327C23.691 26.2034 21.3857 26.0372 18.3578 24.5486C15.1058 22.9515 11.8611 19.8585 10.4447 17.0112C9.76538 15.6454 9.54859 14.2796 9.8521 13.2607C10.04 12.632 10.4591 11.8587 10.8205 11.5046L11.124 11.1939L11.6443 11.2155L12.1718 11.2372L12.5115 12.1333Z" fill="black"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_464:1416">
+                                        <rect width="37" height="37" fill="white" transform="translate(0.0664062)"/>
+                                        </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class='footer'>
+        <div class='container'>
+            <div class='footer__top'>
+                <div class="footer__col">
+                    <a href="{% url 'index' %}" class="footer__logo">
+                        <img src="{% static 'base_app/img/logo.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="footer__col">
+                    <a href="{% url 'about' %}" class="footer__item">О нас</a>
+                    <a href="" class="footer__item">Как мы работаем</a>
+                    <a href="" class="footer__item">Подборки</a>
+                    <a href="{% url 'contacts' %}" class="footer__item">Контакты</a>
+                </div>
+                <div class="footer__col">
+                    <form action="" class="footer__form" id="subscribe_form" method="POST">
+                        {% csrf_token %}
+                        <p class="footer__form-title">Узнавайте о выгодных предложениях первыми!</p>
+                        <div class="footer__input">
+                            <input type="email" placeholder="E-mail" id="email" name="email">
+                            <button class="footer__form-btn" id="send_email" name="send_email">
+                                <svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.8284 0.686734L15.4142 2.10095L24.3167 11.0034H0.854885V12.9975H24.3167L15.4142 21.8999L16.8284 23.3142L28.1421 12.0004L16.8284 0.686734Z" fill="#A09F9F"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="footer__checkbox">
+                            <input type='checkbox' class='checkbox' id='c2' />
+                            <label for='c2'>Я принимаю условия по обработке персональных данных</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="footer__col"></div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__col">
+                    <div class="footer__privacy">© 2021 Spectra</div>
+                </div>
+                <div class="footer__col">
+                    <div class="footer__conf">Политика конфиденциальности</div>
+                </div>
+                <div class="footer__col">
+                    <div class="footer__rules">Правила использования</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <footer>
+        <p>Здесь будет футер с формой для подписки на расыслку</p>
+        <form id="subscribe_form" method="POST">
+            {% csrf_token %}
+            <p>
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email">
+            </p>
+            <input type="submit" value="Отправить" id="send_email" name="send_email">
+        </form>
+    </footer> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{% static 'base_app/js/ajax_forms_handler.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'base_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'base_app/js/swiper.js' %}"></script>
+    <script src="{% static 'base_app/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'base_app/js/index.js' %}"></script>
+</body>
+
+</html>

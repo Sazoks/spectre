@@ -1,0 +1,178 @@
+.service {
+  padding: 75px 0; }
+  .service__inner {
+    display: flex; }
+  .service__title {
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 120%;
+    position: relative;
+    z-index: 2; }
+  .service__list {
+    margin-top: 90px;
+    width: 380px; }
+    .service__list li {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 150%;
+      padding-left: 30px;
+      position: relative; }
+      .service__list li:before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        background: #3159E9;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%); }
+      .service__list li:not(:last-child) {
+        margin-bottom: 45px; }
+  .service__left {
+    width: 655px; }
+  .service__right {
+    position: relative; }
+    .service__right img {
+      position: absolute;
+      height: 720px;
+      width: auto;
+      left: -100px;
+      top: 0; }
+  .service__btn {
+    width: 225px;
+    height: 225px;
+    background: #3159E9;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+    color: #FFFFFF;
+    margin-top: 115px; }
+    .service__btn:hover {
+      color: #FFFFFF;
+      opacity: 0.9; }
+
+.service-steps {
+  padding: 75px 0; }
+  .service-steps__item {
+    display: flex; }
+    .service-steps__item:not(:first-child) {
+      margin-top: 190px; }
+    .service-steps__item:nth-child(even) .service-steps__item-img {
+      order: -1;
+      margin-right: 28px;
+      margin-left: 0; }
+    .service-steps__item:nth-child(even) .service-steps__item-left {
+      margin-right: 0; }
+    .service-steps__item-img {
+      width: 780px;
+      flex-shrink: 0;
+      margin-left: auto; }
+      .service-steps__item-img img {
+        width: 100%; }
+    .service-steps__item-left {
+      margin-right: 165px; }
+    .service-steps__item-title {
+      font-size: 48px;
+      line-height: 120%; }
+    .service-steps__item-text {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 150%;
+      margin-top: 25px;
+      width: 510px; }
+
+@media screen and (max-width: 1650px) {
+  .service__right img {
+    height: 500px; }
+
+  .service-steps__item-img {
+    width: 600px; }
+  .service-steps__item-left {
+    margin-right: 80px; }
+  .service-steps__item-text {
+    width: 450px; } }
+@media screen and (max-width: 1200px) {
+  .service {
+    padding: 40px 0; }
+    .service__right img {
+      height: 400px;
+      top: 30px;
+      left: -200px; }
+    .service__list {
+      margin-top: 50px; }
+
+  .service-steps {
+    padding: 40px 0; }
+    .service-steps__item {
+      padding-top: 120px;
+      flex-wrap: wrap;
+      position: relative; }
+      .service-steps__item:not(:first-child) {
+        margin-top: 85px; }
+      .service-steps__item-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100px;
+        display: flex;
+        align-items: flex-end; }
+      .service-steps__item-left {
+        margin-right: 0; }
+      .service-steps__item-img {
+        width: 100%;
+        order: -1; }
+      .service-steps__item-text {
+        width: 100%; } }
+@media screen and (max-width: 992px) {
+  .service__inner {
+    flex-wrap: wrap;
+    padding-top: 75px;
+    position: relative; }
+  .service__right {
+    width: 100%;
+    order: -1; }
+    .service__right img {
+      height: unset;
+      width: 100%;
+      position: static; }
+  .service__btn {
+    width: 116px;
+    height: 116px;
+    position: absolute;
+    right: 0;
+    bottom: 280px;
+    font-size: 15.5733px;
+    line-height: 150%;
+    z-index: 2;
+    transform: translateY(50%); }
+  .service__title {
+    font-size: 34px;
+    line-height: 129.5%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .service__list {
+    width: 100%; }
+    .service__list li {
+      padding-left: 22px; }
+      .service__list li:not(:last-child) {
+        margin-bottom: 30px; }
+      .service__list li:before {
+        width: 12px;
+        height: 12px; }
+
+  .service-steps__item {
+    padding-top: 85px; }
+    .service-steps__item-title {
+      font-size: 27px;
+      line-height: 129.5%;
+      height: 70px; }
+    .service-steps__item-text {
+      font-size: 18px;
+      line-height: 150%;
+      margin-top: 20px; } }
+
+/*# sourceMappingURL=service.css.map */

@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block title %} Контакты {% endblock %} {% block content %}
+
+
+
+<section class='contacts'>
+    <div class='container'>
+        <h2 class="contacts__title">Контакты</h2>
+        <div class="contacts__desc">Будем рады ответить на Ваши вопросы!</div>
+        <div class="contacts__item">
+            <img src=" {% static 'base_app/img/telephone.png' %} " alt="">
+            <!-- {% static 'base_app/img/logo.png' %} -->
+            <span>Телефон:</span>
+            <a href="tel:+73912152010">
+                <strong>+7 (391) 215‑20‑10</strong>
+            </a>
+        </div>
+        <div class="contacts__item">
+            <img src=" {% static 'base_app/img/email.png' %} " alt="">
+            <span>Email:</span>
+            <a href="mailto:еее@gmail.com">
+                <strong>еее@gmail.com</strong>
+            </a>
+        </div>
+        <div class="contacts__item">
+            <img src=" {% static 'base_app/img/map-marker.png' %} " alt="">
+            <span>Адрес:</span>
+            <strong>Москва, Ленинская Слобода,19</strong>
+        </div>
+        <div class="contacts__desc">Заезжайте к нам в офис!</div>
+        <div id="map">
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad48578ea56730c6a6153744e3c2db56f8686cdd6b16047fec4155e3ca23a33a7&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
